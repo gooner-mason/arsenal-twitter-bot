@@ -67,4 +67,4 @@ const getFixture = async () => {
 		console.log("Successfully sent a tweet at: " + new Date())
 })
 
-module.exports = { getFixture, job }
+module.exports = { job }
