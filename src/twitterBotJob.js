@@ -32,20 +32,46 @@ const getFixture = async () => {
 		? predictions.data.response[0].teams.home.league.form : predictions.data.response[0].teams.away.league.form)
 
 		// content 2 
-		// const winner = predictions.data.response[0].predictions.winner.name
+		const winner = predictions.data.response[0].predictions.winner.name
 		// const winOrDraw = predictions.data.response[0].predictions.win_or_draw
-		// const winOrDraw = predictions.data.response[0].predictions.win_or_draw.includes("true") ? "Yes" : "No"
-		// const overUnder = predictions.data.response[0].predictions.under_over.includes("-") 
-        //         ? predictions.data.response[0].predictions.under_over.replace(/-/g, "U") 
-        //         : predictions.data.response[0].predictions.under_over.replace(/+/g, "O")
-		const advice = predictions.data.response[0].predictions.advice
+		const winOrDraw = predictions.data.response[0].predictions.win_or_draw.toLowerCase() === "true" ? "Yes" : "No"
+		const overUnder = predictions.data.response[0].predictions.under_over.includes("-") 
+                ? predictions.data.response[0].predictions.under_over.replace("-", "U") 
+                : predictions.data.response[0].predictions.under_over.replace("+", "O")
+		// const advice = predictions.data.response[0].predictions.advice
+		const arsenalGoals = predictions.data.response[0].teams.home.name.toLowerCase() === "Arsenal" 
+		? predictions.data.response[0].predictions.goals.home 
+		: predictions.data.response[0].predictions.goals.away
+
+		const arsenalGoalsOU = arsenalGoals.includes("-")
+		? arsenalGoals.replace("-", "U") 
+        : arsenalGoals.replace("+", "O")
+
+		const opponentGoals = predictions.data.response[0].teams.home.name.toLowerCase() === `${opponent}`
+		? predictions.data.response[0].predictions.goals.home 
+		: predictions.data.response[0].predictions.goals.away 
+
+		const opponentGoalsOU = opponentGoals.includes("-")
+		? opponentGoals.replace("-", "U") 
+        : opponentGoals.replace("+", "O")
 	
 		// tweet messages
-		const content1 = `⚽ Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) 🔴 Stadium: ${stadium} ⚪
-		Location: ${city} 🔴 League: ${leagueName} ⚪ Current Form: ${arsenalForm} ⚽ 
-		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
+		const content1 = 
+		`⚽ Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) 
+		🔴 Stadium: ${stadium} 
+		⚪ Location: ${city} 
+		🔴 League: ${leagueName} 
+		⚪ Current Form: ${arsenalForm} 
+		⚽ #arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
 	
-		const content2 = `⚽ PREDICTION 🔴 ${advice} ⚽`
+		const content2 = `
+		⚽ PREDICTIONS 
+		🔴 Winner: ${winner} 
+		⚪ Draw No Bet: ${winOrDraw} 
+		🔴 Over Under: ${overUnder}
+		⚪ Arsenal Goals: ${arsenalGoalsOU}
+		🔴 ${opponent} Goals: ${opponentGoalsOU}
+		⚽ #arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
 
 		// send tweets
 		rwClient.v2.tweet(content1)
