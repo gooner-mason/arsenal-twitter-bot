@@ -89,7 +89,7 @@ const getFixture = async () => {
 	// heroku uses GMT
 	// 0 15 * * * = 8am Phoenix MST
 	// 0 11 * * * = 4am Phoenix MST and 12pm London
-	const job = cron.schedule("0 17 * * *", async () => {
+	const job = cron.schedule("30 17 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
