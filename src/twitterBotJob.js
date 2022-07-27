@@ -30,57 +30,55 @@ const getFixture = async () => {
 		const leagueName= predictions.data.response[0].league.name
 		const arsenalForm = (predictions.data.response[0].teams.home.name.includes("Arsenal") 
 		? predictions.data.response[0].teams.home.league.form : predictions.data.response[0].teams.away.league.form)
-		
+		const arsenalFormNull = arsenalForm === null ? "n/a" : arsenalForm
 		
 		// tweet messages
 		const content1 = 
-		`⚽ Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) 
-		🔴 Stadium: ${stadium} 
-		⚪ Location: ${city} 
-		🔴 League: ${leagueName} 
-		⚪ Current Form: ${arsenalForm} 
-		⚽ #arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
+		`⚽ INFORMATION ⚽
+		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) 
+		⚪ Stadium: ${stadium} 
+		🔴 Location: ${city} 
+		⚪ League: ${leagueName} 
+		🔴 Current Form: ${arsenalFormNull} 
+		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
 		
-		// send tweets
+		// send INFORMATION tweet 
 		rwClient.v2.tweet(content1)
 
+		// send PREDICTION tweet
 		if (days < 1) {
-			const winner = predictions.data.response[0].predictions.winner.name
-		// const winOrDraw = predictions.data.response[0].predictions.win_or_draw
-		const winOrDraw = predictions.data.response[0].predictions.win_or_draw.toLowerCase() === "true" ? "Yes" : "No"
-		const overUnder = predictions.data.response[0].predictions.under_over.includes("-") 
-                ? predictions.data.response[0].predictions.under_over.replace("-", "U") 
-                : predictions.data.response[0].predictions.under_over.replace("+", "O")
+		const winner = predictions.data.response[0].predictions.winner.name
+		const winOrDraw = predictions.data.response[0].predictions.win_or_draw === true ? "Yes" : "No"
+		const overUnder = predictions.data.response[0].predictions.under_over === null 
+		? "n/a" : predictions.data.response[0].predictions.under_over.includes("-") 
+        ? predictions.data.response[0].predictions.under_over.replace("-", "U") 
+        : predictions.data.response[0].predictions.under_over.replace("+", "O")
 		// const advice = predictions.data.response[0].predictions.advice
-		const arsenalGoals = predictions.data.response[0].teams.home.name.toLowerCase() === "Arsenal" 
+		const arsenalGoals = predictions.data.response[0].teams.home.name.toLowerCase() === "arsenal" 
 		? predictions.data.response[0].predictions.goals.home 
 		: predictions.data.response[0].predictions.goals.away
 
-		const arsenalGoalsOU = arsenalGoals.includes("-")
-		? arsenalGoals.replace("-", "U") 
-        : arsenalGoals.replace("+", "O")
+		const arsenalGoalsOU = arsenalGoals === null ? "n/a" : arsenalGoals.includes("-") 
+		? arsenalGoals.replace("-", "U") : arsenalGoals.replace("+", "O")
 
 		const opponentGoals = predictions.data.response[0].teams.home.name.toLowerCase() === `${opponent}`
 		? predictions.data.response[0].predictions.goals.home 
 		: predictions.data.response[0].predictions.goals.away 
 
-		const opponentGoalsOU = opponentGoals.includes("-")
-		? opponentGoals.replace("-", "U") 
-        : opponentGoals.replace("+", "O")
+		const opponentGoalsOU = opponentGoals === null ? "n/a" : opponentGoals.includes("-")
+		? opponentGoals.replace("-", "U") : opponentGoals.replace("+", "O")
 
 		const content2 = 
-		`⚽ PREDICTIONS 
+		`⚽ PREDICTIONS ⚽
 		🔴 Winner: ${winner} 
 		⚪ Draw No Bet: ${winOrDraw} 
-		🔴 Over Under: ${overUnder}
+		🔴 Over/Under: ${overUnder}
 		⚪ Arsenal Goals: ${arsenalGoalsOU}
 		🔴 ${opponent} Goals: ${opponentGoalsOU}
-		⚽ #arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
+		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
 		
 		rwClient.v2.tweet(content2)
-
-		}
-		
+	}
 	} catch (error) {
 		console.log(error)
 	}
