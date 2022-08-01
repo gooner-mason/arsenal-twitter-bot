@@ -20,7 +20,7 @@ const getFixture = async () => {
 		const timeLeft = countDownDate - now
 		var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
 		var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-		
+		var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
 		
 		// content 1 
 		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
@@ -35,7 +35,7 @@ const getFixture = async () => {
 		// tweet messages
 		const content1 = 
 		`⚽ INFORMATION ⚽
-		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) 
+		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) ${minutes} min(s)
 		⚪ Stadium: ${stadium} 
 		🔴 Location: ${city} 
 		⚪ League: ${leagueName} 
