@@ -46,8 +46,9 @@ const getFixture = async () => {
 		rwClient.v2.tweet(content1)
 
 		// send PREDICTION tweet
-		if (days < 1) {
-		const winner = predictions.data.response[0].predictions.winner.name
+		if (days === 0) {
+		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
+		: predictions.data.response[0].predictions.winner.name
 		const winOrDraw = predictions.data.response[0].predictions.win_or_draw === true ? "Yes" : "No"
 		const overUnder = predictions.data.response[0].predictions.under_over === null 
 		? "n/a" : predictions.data.response[0].predictions.under_over.includes("-") 
