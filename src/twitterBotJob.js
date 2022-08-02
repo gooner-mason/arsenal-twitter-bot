@@ -20,7 +20,7 @@ const getFixture = async () => {
 		const timeLeft = countDownDate - now
 		var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
 		var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-		var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+		var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
 		
 		// content 1 
 		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
@@ -44,6 +44,7 @@ const getFixture = async () => {
 		
 		// send INFORMATION tweet 
 		rwClient.v2.tweet(content1)
+		// console.log(content1);
 
 		// send PREDICTION tweet
 		if (days === 0) {
@@ -79,6 +80,7 @@ const getFixture = async () => {
 		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
 		
 		rwClient.v2.tweet(content2)
+		// console.log(content2);
 	}
 	} catch (error) {
 		console.log(error)
