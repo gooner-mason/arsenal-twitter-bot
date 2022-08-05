@@ -22,7 +22,7 @@ const getFixture = async () => {
 		var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
 		var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
 
-		if (days < 7) {
+		if (days < 6) {
 			// content 1 
 		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
 		? fixtures.data.response[0].teams.away.name : fixtures.data.response[0].teams.home.name)
