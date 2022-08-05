@@ -36,12 +36,12 @@ const getFixture = async () => {
 		// tweet messages
 		const content1 = 
 		`⚽ INFORMATION ⚽
-		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) ${minutes} min(s)
-		⚪ Stadium: ${stadium} 
-		🔴 Location: ${city} 
-		⚪ League: ${leagueName} 
-		🔴 Current Form: ${arsenalFormNull} 
-		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
+		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) ${minutes} min(s) 🔴
+		⚪ Stadium: ${stadium} ⚪
+		🔴 Location: ${city} 🔴
+		⚪ League: ${leagueName} ⚪
+		🔴 Current Form: ${arsenalFormNull} 🔴
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets #sportsBetting #freePicks #goonerBot`
 		
 		// send INFORMATION tweet 
 		rwClient.v2.tweet(content1)
@@ -75,12 +75,12 @@ const getFixture = async () => {
 
 		const content2 = 
 		`⚽ PREDICTIONS ⚽
-		🔴 Winner: ${winner} 
-		⚪ Draw No Bet: ${winOrDraw} 
-		🔴 Over/Under: ${overUnder}
-		⚪ Arsenal Goals: ${arsenalGoalsOU}
-		🔴 ${opponent} Goals: ${opponentGoalsOU}
-		#arsenal #afc #coyg #sportsBetting #freePicks #goonerBot`
+		🔴 Winner: ${winner} 🔴
+		⚪ Draw No Bet: ${winOrDraw} ⚪
+		🔴 Over/Under: ${overUnder} 🔴
+		⚪ Arsenal Goals: ${arsenalGoalsOU} ⚪
+		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets #sportsBetting #freePicks #goonerBot`
 		
 		rwClient.v2.tweet(content2)
 		// console.log(content2);
