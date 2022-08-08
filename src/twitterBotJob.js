@@ -18,12 +18,12 @@ const getFixture = async () => {
 		const countDownDate = new Date(fixtures.data.response[0].fixture.date).getTime()
 		const now = new Date().getTime()
 		const timeLeft = countDownDate - now
-		var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
-		var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-		var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+		const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
+		const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+		const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
 
-		if (days < 6) {
-			// content 1 
+		// content 1 
+		if (days < 5) {
 		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
 		? fixtures.data.response[0].teams.away.name : fixtures.data.response[0].teams.home.name)
 		const stadium = fixtures.data.response[0].fixture.venue.name
@@ -48,9 +48,8 @@ const getFixture = async () => {
 		// console.log(content1);
 		}
 		
-		
 		// send PREDICTION tweet
-		if (days === 0 && hours === 0 && minutes > 10) {
+		if (days <= 0 && hours <= 0 && minutes >= 10) {
 		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
 		: predictions.data.response[0].predictions.winner.name
 		const winOrDraw = predictions.data.response[0].predictions.win_or_draw === true ? "Yes" : "No"
@@ -65,6 +64,9 @@ const getFixture = async () => {
 
 		const arsenalGoalsOU = arsenalGoals === null ? "n/a" : arsenalGoals.includes("-") 
 		? arsenalGoals.replace("-", "U") : arsenalGoals.replace("+", "O")
+
+		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
+		? fixtures.data.response[0].teams.away.name : fixtures.data.response[0].teams.home.name)
 
 		const opponentGoals = predictions.data.response[0].teams.home.name.toLowerCase() === `${opponent}`
 		? predictions.data.response[0].predictions.goals.home 
