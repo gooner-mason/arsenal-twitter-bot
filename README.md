@@ -1,6 +1,6 @@
 # arsenal-twitter-bot
 
-[@Gooner_Bot](https://twitter.com/Gooner_Bot) - twitter bot that tweets how many days until the Gunner's next game
+[@Gooner_Bot](https://twitter.com/Gooner_Bot) - twitter bot that tweets how many days until Arsenal's next match and tweets match predictions ~30 min before kickoff
 
 ## twitter-api-v2
 
