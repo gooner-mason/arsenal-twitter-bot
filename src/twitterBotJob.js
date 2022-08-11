@@ -49,7 +49,7 @@ const getFixture = async () => {
 		}
 		
 		// send PREDICTION tweet
-		if (days <= 0 && hours <= 0 && 30 >= minutes >= 1) {
+		if (days <= 0 && hours <= 0 && 30 >= minutes >= 0) {
 		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
 		: predictions.data.response[0].predictions.winner.name
 		const winOrDraw = predictions.data.response[0].predictions.win_or_draw === true ? "Yes" : "No"
