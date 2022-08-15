@@ -49,7 +49,7 @@ const getFixture = async () => {
 		}
 		
 		// send PREDICTION tweet
-		if (days <= 0 && hours <= 0 && 60 >= minutes >= 0) {
+		if (days <= 0 && hours <= 2) {
 		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
 		: predictions.data.response[0].predictions.winner.name
 		const winOrDraw = predictions.data.response[0].predictions.win_or_draw === true ? "Yes" : "No"
@@ -102,18 +102,8 @@ const getFixture = async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
-	// 5 am
-	const job3 = cron.schedule("0 12 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
 	// 6am
 	const job5 = cron.schedule("0 13 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-	// 7am
-	const job7 = cron.schedule("0 14 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
@@ -122,18 +112,8 @@ const getFixture = async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
-	// 9am
-	const job11 = cron.schedule("0 16 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
 	// 10am
 	const job13 = cron.schedule("0 17 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-	// 11am
-	const job15 = cron.schedule("0 18 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
@@ -143,4 +123,4 @@ const getFixture = async () => {
 		console.log("Successfully sent a tweet at: " + new Date())
 }) 	
 
-module.exports = { job1, job3, job5, job7, job9, job11, job13, job15, job17 }
+module.exports = { job1, job5, job9, job13, job17 }
