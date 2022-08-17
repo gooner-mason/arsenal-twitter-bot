@@ -93,34 +93,34 @@ const getFixture = async () => {
 	}
 }
 
-	// heroku uses GMT
-	// 0 15 * * * = 8am Phoenix MST
-	// 0 12 * * * = 5am Phoenix MST and 1pm London
+	// 4am MST
+	const jobAt4 = cron.schedule("0 11 * * *", async () => {
+		await getFixture()
+		console.log("Successfully sent a tweet at: " + new Date())
+})
 
-	// 4am
-	const job1 = cron.schedule("0 11 * * *", async () => {
+	// 6am MST
+	const jobAt6 = cron.schedule("0 13 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
-	// 6am
-	const job5 = cron.schedule("0 13 * * *", async () => {
+
+	// 8am MST
+	const jobAt8 = cron.schedule("0 15 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
-	// 8am
-	const job9 = cron.schedule("0 15 * * *", async () => {
+
+	// 10am MST
+	const jobAt10 = cron.schedule("0 17 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 })
-	// 10am
-	const job13 = cron.schedule("0 17 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-	// 12pm 
-	const job17 = cron.schedule("0 19 * * *", async () => {
+
+	// 12pm MST
+	const jobAt12 = cron.schedule("0 19 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 }) 	
 
-module.exports = { job1, job5, job9, job13, job17 }
+module.exports = { jobAt4, jobAt6, jobAt8, jobAt10, jobAt12 }
