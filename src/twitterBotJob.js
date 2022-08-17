@@ -20,10 +20,8 @@ const getFixture = async () => {
 		const timeLeft = countDownDate - now
 		const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
 		const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-		const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+		const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
 
-		// content 1 
-		if (days < 5) {
 		const opponent = (fixtures.data.response[0].teams.home.name.includes("Arsenal") 
 		? fixtures.data.response[0].teams.away.name : fixtures.data.response[0].teams.home.name)
 		const stadium = fixtures.data.response[0].fixture.venue.name
@@ -36,7 +34,16 @@ const getFixture = async () => {
 		// tweet messages
 		const content1 = 
 		`⚽ INFORMATION ⚽
-		🔴 Arsenal face ${opponent} in ${days} day(s) ${hours} hr(s) ${minutes} min(s) 🔴
+		🔴 Arsenal face ${opponent} 🔴
+		⚪ Kickoff In ${days} day(s) ${hours} hr(s) ${minutes} min(s) ⚪
+		🔴 Stadium: ${stadium} 🔴 
+		⚪ Location: ${city} ⚪ 
+		🔴 League: ${leagueName} 🔴 
+		⚪ Current Form: ${arsenalFormNull} ⚪ 
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets #sportsBetting #freePicks #goonerBot`
+		const content3 = 
+		`⚽ INFORMATION ⚽
+		🔴 Arsenal face ${opponent}... countdown is work in progress🔴
 		⚪ Stadium: ${stadium} ⚪
 		🔴 Location: ${city} 🔴
 		⚪ League: ${leagueName} ⚪
@@ -45,8 +52,8 @@ const getFixture = async () => {
 		
 		// send INFORMATION tweet 
 		rwClient.v2.tweet(content1)
+		rwClient.v2.tweet(content3)
 		// console.log(content1);
-		}
 		
 		// send PREDICTION tweet
 		if (days <= 0 && hours <= 2) {
@@ -79,11 +86,11 @@ const getFixture = async () => {
 		`⚽ PREDICTIONS ⚽
 		🔴 Winner: ${winner} 🔴
 		⚪ Draw No Bet: ${winOrDraw} ⚪
-		🔴 Over/Under: ${overUnder} 🔴
-		⚪ Arsenal Goals: ${arsenalGoalsOU} ⚪
-		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
 		#arsenal #afc #coyg #aresenalPicks #arsenalBets #sportsBetting #freePicks #goonerBot`
 		
+		// 🔴 Over/Under: ${overUnder} 🔴
+		// ⚪ Arsenal Goals: ${arsenalGoalsOU} ⚪
+		// 🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
 		rwClient.v2.tweet(content2)
 		// console.log(content2);
 	}
