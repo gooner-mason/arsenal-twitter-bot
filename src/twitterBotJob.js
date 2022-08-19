@@ -58,7 +58,6 @@ const getFixture = async () => {
 		
 		// if days til match is 0 and less than or equal to 2 hours til match
 		if (days === 0 && hours <=2 ) {
-
 		// get predicted winner
 		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
 		: predictions.data.response[0].predictions.winner.name
