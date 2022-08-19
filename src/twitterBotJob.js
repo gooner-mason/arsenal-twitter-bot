@@ -51,7 +51,7 @@ const getFixture = async () => {
 		🔴 Stadium: ${stadium} 🔴 
 		🔴 League: ${leagueName} 🔴 
 		⚪ Current Form: ${arsenalFormNull} ⚪ 
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks`
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
 	
 		// send information tweet 
 		rwClient.v2.tweet(content1)
@@ -86,7 +86,7 @@ const getFixture = async () => {
 		⚪ Draw No Bet: ${winOrDraw} ⚪
 		⚪ Arsenal Goals: ${arsenalGoalsOU} ⚪
 		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks`
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
 		
 		// send predictions tweet
 		rwClient.v2.tweet(content2)
