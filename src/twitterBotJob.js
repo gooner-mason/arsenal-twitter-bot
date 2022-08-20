@@ -49,8 +49,8 @@ const getFixture = async () => {
 		🔴 Opponent: ${opponent} 🔴
 		⚪ Kickoff: ${days} day(s) ${hours} hr(s) ${minutes} min(s) ⚪
 		🔴 Stadium: ${stadium} 🔴 
-		🔴 League: ${leagueName} 🔴 
-		⚪ Current Form: ${arsenalFormNull} ⚪ 
+		⚪ League: ${leagueName} ⚪
+		🔴 Current Form: ${arsenalFormNull} 🔴
 		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
 	
 		// send information tweet 
@@ -84,8 +84,8 @@ const getFixture = async () => {
 		`⚽ PREDICTIONS ⚽
 		🔴 Winner: ${winner} 🔴
 		⚪ Draw No Bet: ${winOrDraw} ⚪
-		⚪ Arsenal Goals: ${arsenalGoalsOU} ⚪
-		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
+		🔴 Arsenal Goals: ${arsenalGoalsOU} 🔴
+		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪
 		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
 		
 		// send predictions tweet
