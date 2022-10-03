@@ -44,14 +44,27 @@ const getFixture = async () => {
 		const arsenalFormNull = arsenalForm === null ? "n/a" : arsenalForm
 		
 		// information tweet
-		const content1 = 
-		`⚽ Arsenal Face ${opponent} in ${days} day(s) ${hours} hr(s)⚽
+		const content1Days = 
+		`⚽ Arsenal Face ${opponent} in ${days} day(s) ⚽
+		🔴 Stadium: ${stadium} 🔴 
+		⚪ League: ${leagueName} ⚪
+		🔴 Current Form: ${arsenalFormNull} 🔴`
+		
+		// information tweet
+		const content1Hours = 
+		`⚽ Arsenal Face ${opponent} in ${hours} hr(s) ⚽
 		🔴 Stadium: ${stadium} 🔴 
 		⚪ League: ${leagueName} ⚪
 		🔴 Current Form: ${arsenalFormNull} 🔴`
 	
-		// send information tweet 
-		rwClient.v2.tweet(content1)
+		// send information tweet if days is > 0
+		if (days > 0) {
+			rwClient.v2.tweet(content1Days)
+		} 
+
+		if (days === 0 ) {
+			rwClient.v2.tweet(content1Hours)
+		}
 		
 		// if days til match is 0 and less than or equal to 2 hours til match
 		if (days === 0 && hours <=2 ) {
