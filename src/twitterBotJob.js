@@ -45,13 +45,10 @@ const getFixture = async () => {
 		
 		// information tweet
 		const content1 = 
-		`⚽ INFORMATION ⚽
-		🔴 Opponent: ${opponent} 🔴
-		⚪ Kickoff: ${days} day(s) ${hours} hr(s) ${minutes} min(s) ⚪
+		`⚽ Arsenal Face ${opponent} in ${days} day(s) ${hours} hr(s)⚽
 		🔴 Stadium: ${stadium} 🔴 
 		⚪ League: ${leagueName} ⚪
-		🔴 Current Form: ${arsenalFormNull} 🔴
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
+		🔴 Current Form: ${arsenalFormNull} 🔴`
 	
 		// send information tweet 
 		rwClient.v2.tweet(content1)
@@ -81,12 +78,10 @@ const getFixture = async () => {
 
 		// predictions tweet
 		const content2 = 
-		`⚽ PREDICTIONS ⚽
+		`⚽ Predictions against ${opponent} ⚽
 		🔴 Winner: ${winner} 🔴
-		⚪ Draw No Bet: ${winOrDraw} ⚪
 		🔴 Arsenal Goals: ${arsenalGoalsOU} 🔴
-		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets #freePicks #freeBets`
+		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪`
 		
 		// send predictions tweet
 		rwClient.v2.tweet(content2)
@@ -97,7 +92,13 @@ const getFixture = async () => {
 	}
 }
 
-	// 4am MST
+	// 2am MST
+	const jobAt2am = cron.schedule("0 9 * * *", async () => {
+		await getFixture()
+		console.log("Successfully sent a tweet at: " + new Date())
+})
+
+        // 4am MST
 	const jobAt4 = cron.schedule("0 11 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
@@ -127,9 +128,9 @@ const getFixture = async () => {
 		console.log("Successfully sent a tweet at: " + new Date())
 }) 	
 	// 2pm MST
-	const jobAt2 = cron.schedule("0 21 * * *", async () => {
+	const jobAt2pm = cron.schedule("0 21 * * *", async () => {
 		await getFixture()
 		console.log("Successfully sent a tweet at: " + new Date())
 }) 	
 
-module.exports = { jobAt4, jobAt6, jobAt8, jobAt10, jobAt12, jobAt2 }
+module.exports = { jobAt2am, jobAt4, jobAt6, jobAt8, jobAt10, jobAt12, jobAt2pm }
