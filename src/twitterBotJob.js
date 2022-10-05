@@ -48,14 +48,16 @@ const getFixture = async () => {
 		`⚽ Arsenal Face ${opponent} in ${days} day(s) ⚽
 		🔴 Stadium: ${stadium} 🔴 
 		⚪ League: ${leagueName} ⚪
-		🔴 Current Form: ${arsenalFormNull} 🔴`
+		🔴 Current Form: ${arsenalFormNull} 🔴
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets`
 		
 		// information tweet
 		const content1Hours = 
 		`⚽ Arsenal Face ${opponent} in ${hours} hr(s) ⚽
 		🔴 Stadium: ${stadium} 🔴 
 		⚪ League: ${leagueName} ⚪
-		🔴 Current Form: ${arsenalFormNull} 🔴`
+		🔴 Current Form: ${arsenalFormNull} 🔴
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets`
 	
 		// send information tweet if days is > 0
 		if (days > 0) {
@@ -67,7 +69,7 @@ const getFixture = async () => {
 		}
 		
 		// if days til match is 0 and less than or equal to 2 hours til match
-		if (days === 0 && hours <=2 ) {
+		if (days < 1) {
 		// get predicted winner
 		const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
 		: predictions.data.response[0].predictions.winner.name
@@ -94,7 +96,8 @@ const getFixture = async () => {
 		`⚽ Predictions against ${opponent} ⚽
 		🔴 Winner: ${winner} 🔴
 		🔴 Arsenal Goals: ${arsenalGoalsOU} 🔴
-		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪`
+		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets`
 		
 		// send predictions tweet
 		rwClient.v2.tweet(content2)
@@ -111,39 +114,4 @@ const getFixture = async () => {
 		console.log("Successfully sent a tweet at: " + new Date())
 })
 
-        // 4am MST
-	const jobAt4 = cron.schedule("0 11 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-
-	// 6am MST
-	const jobAt6 = cron.schedule("0 13 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-
-	// 8am MST
-	const jobAt8 = cron.schedule("0 15 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-
-	// 10am MST
-	const jobAt10 = cron.schedule("0 17 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-})
-
-	// 12pm MST
-	const jobAt12 = cron.schedule("0 19 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-}) 	
-	// 2pm MST
-	const jobAt2pm = cron.schedule("0 21 * * *", async () => {
-		await getFixture()
-		console.log("Successfully sent a tweet at: " + new Date())
-}) 	
-
-module.exports = { jobAt2am, jobAt4, jobAt6, jobAt8, jobAt10, jobAt12, jobAt2pm }
+module.exports = { jobAt2am }
