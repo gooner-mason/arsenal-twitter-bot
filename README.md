@@ -1,6 +1,6 @@
 # arsenal-twitter-bot
 
-[@Gooner_Bot](https://twitter.com/Gooner_Bot) - twitter bot that tweets how many days until Arsenal's next match and tweets match predictions ~30 min before kickoff
+[@Gooner_Bot](https://twitter.com/Gooner_Bot) - twitter bot that tweets details about Arsenal's next match and tweets match predictions.
 
 ## twitter-api-v2
 
@@ -13,11 +13,3 @@
 ## Heroku deployment
 
 https://arsenal-twitter-bot.herokuapp.com/
-
-## email
-
-goonertwitterbot@gmail.com
-
-## NEXT
-
-https://www.api-football.com/documentation-beta#tag/Predictions
