@@ -95,10 +95,9 @@ const getFixture = async () => {
 		const content2 = 
 		`⚽ Predictions against ${opponent} ⚽
 		🔴 Winner: ${winner} 🔴
-		🔴 Arsenal Goals: ${arsenalGoalsOU} 🔴
-		⚪ ${opponent} Goals: ${opponentGoalsOU} ⚪
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets`
-		
+		⚪️ Arsenal Goals: ${arsenalGoalsOU} ⚪️
+		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
+		#arsenal #afc #coyg #aresenalPicks #arsenalBets`	
 		// send predictions tweet
 		rwClient.v2.tweet(content2)
 	}
