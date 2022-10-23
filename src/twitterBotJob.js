@@ -50,7 +50,7 @@ const getFixture = async () => {
 			🔴 Stadium: ${stadium} 🔴 
 			⚪ League: ${leagueName} ⚪
 			🔴 Current Form: ${arsenalFormNull} 🔴
-			#arsenal #afc #coyg #aresenalPicks #arsenalBets`;
+			#arsenal #afc #coyg`;
 		
 			// information tweet
 			const content1Hours = 
@@ -58,7 +58,7 @@ const getFixture = async () => {
 			🔴 Stadium: ${stadium} 🔴 
 			⚪ League: ${leagueName} ⚪
 			🔴 Current Form: ${arsenalFormNull} 🔴
-			#arsenal #afc #coyg #aresenalPicks #arsenalBets`;
+			#arsenal #afc #coyg`;
 	
 			// send information tweet if days is > 0
 			if (days > 0) {
@@ -95,7 +95,7 @@ const getFixture = async () => {
 		🔴 Winner: ${winner} 🔴
 		⚪️ Arsenal Goals: ${arsenalGoalsOU} ⚪️
 		🔴 ${opponent} Goals: ${opponentGoalsOU} 🔴
-		#arsenal #afc #coyg #aresenalPicks #arsenalBets`;
+		#arsenal #afc #coyg`;
 				
 				// send predictions tweet
 				rwClient.v2.tweet(content2);
