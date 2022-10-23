@@ -46,7 +46,7 @@ const getFixture = async () => {
 		
 			// information tweet
 			const content1Days = 
-			`⚽ Arsenal Face ${opponent} in ${days} day(s) ⚽
+			`⚽ Arsenal face ${opponent} in ${days} day(s) ⚽
 			🔴 Stadium: ${stadium} 🔴 
 			⚪ League: ${leagueName} ⚪
 			🔴 Current Form: ${arsenalFormNull} 🔴
@@ -54,7 +54,7 @@ const getFixture = async () => {
 		
 			// information tweet
 			const content1Hours = 
-			`⚽ Arsenal Face ${opponent} in ${hours} hr(s) ⚽
+			`⚽ Arsenal face ${opponent} in ${hours} hr(s) ⚽
 			🔴 Stadium: ${stadium} 🔴 
 			⚪ League: ${leagueName} ⚪
 			🔴 Current Form: ${arsenalFormNull} 🔴
