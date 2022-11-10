@@ -1,7 +1,7 @@
 {
   "name": "arsenal-twitter-bot",
   "version": "1.0.0",
-  "description": "twitter bot that posts how many days until the UEFA Europa Leauge final",
+  "description": "twitter bot for all things arsenal",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -19,17 +19,17 @@
   },
   "homepage": "https://github.com/masonjmaier23/arsenal-twitter-bot#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "cron": "^2.0.0",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "node-cron": "^3.0.1",
-    "nodemon": "^1.3.3",
+    "axios": "^1.1.3",
+    "cron": "^2.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20",
     "process": "^0.11.10",
-    "twitter-api-v2": "^1.12.2",
-    "uuid": "^8.3.2"
+    "twitter-api-v2": "^1.12.9",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.24.0"
+    "eslint": "^8.27.0"
   }
 }
