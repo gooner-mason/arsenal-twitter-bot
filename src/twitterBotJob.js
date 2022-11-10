@@ -105,7 +105,8 @@ async function sendTweet() {
 }
 
 // 2am MST
-const jobAt2am = cron.schedule("0 9 * * *", async () => {
+// const jobAt2am = cron.schedule("0 9 * * *", async () => {
+const jobAt2am = cron.schedule("0 * * * *", async () => {
 	await sendTweet();
 	console.log("Successfully sent a tweet at: " + new Date());
 });
