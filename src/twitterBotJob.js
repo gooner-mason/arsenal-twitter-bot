@@ -40,8 +40,7 @@ async function getMatchData() {
 		? predictions.data.response[0].teams.home.league.form : predictions.data.response[0].teams.away.league.form);
 	const arsenalFormNull = arsenalForm === null ? "n/a" : arsenalForm;
 
-	const winner = predictions.data.response[0].predictions.winner.name === null ? "n/a" 
-		: predictions.data.response[0].predictions.winner.name;
+	const winner = "Arsenal";
 
 	// get predicted arsenal goals
 	const arsenalGoals = predictions.data.response[0].teams.home.name.toLowerCase() === "arsenal" 
@@ -59,7 +58,7 @@ async function getMatchData() {
 
 	const matchData = { days, hours, opponent, stadium, leagueName, arsenalFormNull, winner, arsenalGoalsOU, opponentGoalsOU };
 	
-	console.log(matchData);
+	return matchData;
 }
 
 async function sendTweet() {
@@ -105,8 +104,7 @@ async function sendTweet() {
 }
 
 // 2am MST
-// const jobAt2am = cron.schedule("0 9 * * *", async () => {
-const jobAt2am = cron.schedule("0 * * * *", async () => {
+const jobAt2am = cron.schedule("0 9 * * *", async () => {
 	await sendTweet();
 	console.log("Successfully sent a tweet at: " + new Date());
 });
